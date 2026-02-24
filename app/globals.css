@@ -1,0 +1,167 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Permanent+Marker&display=swap'); */
+@import url('./css/logo.css');
+@import 'tailwindcss';
+/* :root {
+  --background: #ffffff;
+  --foreground: #171717;
+} */
+
+/* @theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+} */
+
+html {
+  scroll-behavior: smooth;
+}
+
+section.app-section.MuiBox-root {
+  padding-top: 200px;
+  padding-bottom: 4rem;
+  scroll-margin-top: 200px;
+  height: 100%;
+}
+
+.navbar {
+  --hs-navbar-padding-x: 0;
+  --hs-navbar-padding-y: 0.5rem;
+  --hs-navbar-color: rgba(var(--hs-emphasis-color-rgb), 0.65);
+  --hs-navbar-hover-color: rgba(var(--hs-emphasis-color-rgb), 0.8);
+  --hs-navbar-disabled-color: rgba(var(--hs-emphasis-color-rgb), 0.3);
+  --hs-navbar-active-color: rgba(var(--hs-emphasis-color-rgb), 1);
+  --hs-navbar-brand-padding-y: 0.3125rem;
+  --hs-navbar-brand-margin-end: 1rem;
+  --hs-navbar-brand-font-size: 1.25rem;
+  --hs-navbar-brand-color: rgba(var(--hs-emphasis-color-rgb), 1);
+  --hs-navbar-brand-hover-color: rgba(var(--hs-emphasis-color-rgb), 1);
+  --hs-navbar-nav-link-padding-x: 0.5rem;
+  --hs-navbar-toggler-padding-y: 0.25rem;
+  --hs-navbar-toggler-padding-x: 0.75rem;
+  --hs-navbar-toggler-font-size: 1.25rem;
+  --hs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2833, 37, 41, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  --hs-navbar-toggler-border-color: rgba(var(--hs-emphasis-color-rgb), 0.15);
+  --hs-navbar-toggler-border-radius: var(--hs-border-radius);
+  --hs-navbar-toggler-focus-width: 0.25rem;
+  --hs-navbar-toggler-transition: box-shadow 0.15s ease-in-out;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--bs-navbar-padding-y) var(--bs-navbar-padding-x);
+}
+
+/* latin */
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src:
+    url(/css/font/caveat.woff2) format('woff2'),
+    url(https://fonts.gstatic.com/s/caveat/v23/Wnz6HAc5bAfYB2Q7ZjYY.woff2) format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+.caveat-regular {
+  font-family: 'Caveat', cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* latin */
+@font-face {
+  font-family: 'Permanent Marker';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    url(/css/font/PermanentMarker-Regular.woff2) format('woff2'),
+    url(https://fonts.gstatic.com/s/permanentmarker/v16/Fh4uPib9Iyv2ucM6pGQMWimMp004La2Cfw.woff2) format('woff');
+  src: url(https://fonts.gstatic.com/s/permanentmarker/v16/Fh4uPib9Iyv2ucM6pGQMWimMp004La2Cfw.woff2) format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+.permanent-marker-regular {
+  font-family: 'Permanent Marker', cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.font-caveat {
+  font-family: var(--font-caveat);
+}
+
+.font-permanent-marker {
+  font-family: var(--font-permanent-marker);
+}
+
+.site-logo-link.a {
+  color: #ffc71e;
+  padding: 0 0.5rem;
+}
+
+.site-logo {
+  color: #fed136;
+  display: inline-flex;
+  font-family: var(--font-caveat);
+  font-weight: 400;
+  line-height: 0.7;
+  text-decoration: none;
+}
+
+.hs-site-logo-symbol {
+  color: #fed136;
+  display: inline-flex;
+  padding-right: 2px;
+  line-height: 0.7;
+}
+
+.site-logo:hover {
+  color: #ffe659;
+  text-shadow:
+    0 -1px 4px transparent,
+    0 -2px 10px #ff0,
+    0 -10px 20px #ff8000,
+    0 -18px 40px red;
+  transition: all 0.2s ease-out;
+}
+
+.navbar-brand {
+  padding-top: var(--bs-navbar-brand-padding-y);
+  padding-bottom: var(--bs-navbar-brand-padding-y);
+  margin-right: var(--bs-navbar-brand-margin-end);
+  font-size: var(--bs-navbar-brand-font-size);
+  color: var(--bs-navbar-brand-color);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.hs-frosted-glass {
+  background: rgba(255, 255, 255, 0.09);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: none;
+}

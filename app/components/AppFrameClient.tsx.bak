@@ -1,0 +1,34 @@
+'use client'
+import * as React from 'react'
+import { Box } from '@mui/material'
+import { Suspense } from 'react'
+import { appFrame } from '../data/appFrame.ts'
+import Nav from './Nav.tsx'
+
+export default function AppFrameClient() {
+  // Create refs for each section using appFrame
+  const sectionRefs = React.useMemo(() => {
+    const refs: { [key: string]: React.RefObject<HTMLElement | null> } = {}
+    appFrame.forEach(({ url }) => {
+      const id = url.replace('#', '')
+      refs[id] = React.createRef<HTMLElement>()
+    })
+    return refs
+  }, [])
+
+  return (
+    <>
+      <Nav sectionRefs={sectionRefs} />
+      {appFrame.map(({ page, url, component: SectionComponent }) => {
+        const id = url.replace('#', '')
+        return (
+          <Box key={page} component="section" id={id} ref={sectionRefs[id]} sx={{ minHeight: '100vh', maxHeight: '100vh', width: '100vw', overflow: 'auto' }}>
+            <Suspense fallback={<div>Loading {page}...</div>}>
+              <SectionComponent />
+            </Suspense>
+          </Box>
+        )
+      })}
+    </>
+  )
+}

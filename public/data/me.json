@@ -1,0 +1,120 @@
+[
+  {
+    "id": 0,
+    "datecreated": "2026-01-01T00:00:00Z",
+    "datemodified": "2026-01-01T00:00:00Z",
+    "pagename": "Me",
+    "description": "A timeline of my life and career.",
+    "keywords": ["timeline", "career", "life", "experience"],
+    "author": "Heath Shults",
+    "content": "This is a timeline of my life and career. It includes my education, my work experience, and some of the projects I've worked on. I hope you find it interesting.",
+    "timeline": [
+      {
+        "id": 0,
+        "date": "September 1998",
+        "title": "Sessions College for Professional Design",
+        "icon": "school",
+        "techstack": ["HTML", "CSS", "JavaScript", "Flash", "ActionScript", "Photoshop", "Illustrator", "InDesign"],
+        "examples": "./",
+        "description": "I thought to myself, \"Hmmm... looks like this internet thing might stick around...\""
+      },
+      {
+        "id": 1,
+        "date": "June 2000",
+        "title": "Bowling Proprietors' Association of America",
+        "jobtitle": "Web Manager",
+        "icon": "<WorkIcon />",
+        "techstack": ["HTML", "CSS", "JavaScript", "C#", "MSSQL", "Flash", "ActionScript"],
+        "examples": "./",
+        "description": "My first real job as a developer. Web Manager. Managing projects and developing software solutions. Eventually making it all the way to Director in 2007."
+      },
+      {
+        "id": 2,
+        "date": "March 2017",
+        "title": "Blue Star Sports",
+        "jobtitle": "UI/UX Engineer",
+        "icon": "<WorkIcon />",
+        "techstack": ["HTML", "CSS", "JavaScript", "React.js"],
+        "examples": "./",
+        "description": "UI/UX Engineer was a startup company focused on youth football player tracking. I Converted creative assets into functional interactive user interfaces and received my first exposuer to React.js"
+      },
+      {
+        "id": 3,
+        "date": "May 2018",
+        "title": "Fannie Mae",
+        "jobtitle": "UI Interaction Designer",
+        "icon": "<WorkIcon />",
+        "techstack": ["JavaScript", "SCSS/CSS", "HTML5", "REST APIs", "JSON"],
+        "examples": "./",
+        "description": "At Fannie Mae I had the pleasure of being a lead on a creative team that was tasked with developing an entire Design System for the entire company to utilize in an effort to standardize best practices, and establish consistency amoung the corporation of over 8000 employees. We called it Blue Print Design System. We used JavaScript, SCSS/CSS and HTML5 on the front end and consumed REST APIs and JSON based data. to create UI and small micro apps for the design system. One of the most interesting things I learned was Design Thinking. I completed the LUMA certification and still utilize LUMA's approach to solving problems to this day."
+      },
+      {
+        "id": 4,
+        "date": "May 2020",
+        "title": "USAA",
+        "jobtitle": "UI/UX Engineer",
+        "dotcolor": "primary",
+        "dotvariant": "outlined",
+        "icon": "<WorkIcon />",
+        "techstack": ["Angular", "Ionic", "Git Labs", "Gradel", " iOS", "Android", "CI/CD", "AWS"],
+        "examples": "./",
+        "description": "Employee Mobile Apps - USAA This was a great opportunity to gain exposure to mobile development. We used Angular and Ionic for the base of the libraries. We worked on 15 different apps and developed a COVID app to check employees for illness before reporting to work. We utilized Git Labs and Gradel for our CI pipeline which compiled to both iOS and Android applications. UI Engineer✶ Focused on User Experience & Design Thinking✶"
+      },
+      {
+        "id": 5,
+        "date": "May 2021",
+        "title": "Alfi, Inc.",
+        "jobtitle": "Senior JavaScript Engineer",
+        "dotcolor": "primary",
+        "dotvariant": "outlined",
+        "icon": "<WorkIcon />",
+        "examples": "./",
+        "description": "Direct Hire. AI powered recognition devices for seeing and tracking people in order to provide relative ads the next time that person is recognized."
+      },
+      {
+        "id": 6,
+        "date": "November 2021",
+        "title": "City Electric Supply",
+        "jobtitle": "Senior Frontend Engineer",
+        "dotcolor": "primary",
+        "dotvariant": "outlined",
+        "icon": "<WorkIcon />",
+        "examples": "./",
+        "description": "Direct Hire"
+      },
+      {
+        "id": 7,
+        "date": "January 2023",
+        "title": "JP Morgan Chase",
+        "jobtitle": "Senior JavaScript Engineer",
+        "dotcolor": "primary",
+        "dotvariant": "outlined",
+        "icon": "<WorkIcon />",
+        "examples": "./",
+        "description": "90 day contract"
+      },
+      {
+        "id": 8,
+        "date": "June 2023",
+        "title": "Pioneer Natural Resources",
+        "jobtitle": "Senior Frontend Engineer",
+        "icon": "<WorkIcon />",
+        "dotcolor": "primary",
+        "dotvariant": "outlined",
+        "examples": "./",
+        "description": "6 Month Contract"
+      },
+      {
+        "id": 9,
+        "date": "November 2024",
+        "title": "Bank of America",
+        "jobtitle": "Application Architect IV",
+        "icon": "<WorkIcon />",
+        "dotcolor": "primary",
+        "dotvariant": "outlined",
+        "examples": "./",
+        "description": "1 year contract position as an Application Architect IV. I will be working on the design and development of a new application for the bank. I will be using React.js, Node.js, and AWS for the development of the application. I am excited to be working on this project and to be a part of the team at Bank of America."
+      }
+    ]
+  }
+]
