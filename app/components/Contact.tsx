@@ -7,7 +7,7 @@ export const Contact: React.FC = () => {
       sx={{
         position: 'relative',
         width: '100vw',
-        height: { xs: 'calc(100vh - 56px)', sm: 'calc(100vh - 64px)' },
+        minHeight: { xs: 'calc(100vh - 56px)', sm: 'calc(100vh - 64px)' },
         overflow: 'hidden',
         marginTop: 0, // To offset the fixed header
       }}
@@ -41,7 +41,7 @@ export const Contact: React.FC = () => {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          height: '100%',
+          minHeight: '100%',
           position: 'relative',
           zIndex: 1,
           maxWidth: '90%',

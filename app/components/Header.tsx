@@ -1,7 +1,7 @@
 'use client'
 import * as React from 'react'
 import Nav from './Nav.tsx'
-import { Box } from '@mui/material'
+import { Box, Stack } from '@mui/material'
 import { appFrame } from '../data/appFrame.ts'
 import { useHeader } from './HeaderContext.tsx'
 import CircleLoader, { ComponentLoader } from '../loading.tsx'
@@ -64,11 +64,9 @@ export default function Header() {
                     <span></span>
                   </div>
                 </div>
-
                 <div className="desc">
                   <p>{/* product description */}</p>
                 </div>
-
                 <div className="buttons">
                   <a href="https://opensea.io/" target="_blank" className="neoh_fn_button opensea" suppressHydrationWarning>
                     <span className="icon" suppressHydrationWarning>
@@ -91,20 +89,21 @@ export default function Header() {
       <Box sx={{ position: 'fixed', top: topValue, left: 0, width: '100vw', height: '100px', zIndex: 1300, transition: 'all 0.25s ease-in-out' }}>
         <Nav sectionRefs={sectionRefs} />
       </Box>
-      {appFrame.map(({ page, url, component: SectionComponent }) => {
-        const id = url.replace('#', '')
-        const isLoaded = loadedPages.has(id)
-
-        return (
-          <Box key={page} component="section" id={id} ref={sectionRefs[id]} sx={{ minHeight: '100vh', width: '100vw' }}>
-            {isLoaded && (
-              <React.Suspense fallback={<CircleLoader />}>
-                <SectionComponent />
-              </React.Suspense>
-            )}
-          </Box>
-        )
-      })}
+      <Stack>
+        {appFrame.map(({ page, url, component: SectionComponent }) => {
+          const id = url.replace('#', '')
+          const isLoaded = loadedPages.has(id)
+          return (
+            <Box key={page} component="section" id={id} ref={sectionRefs[id]} sx={{ minHeight: '100vh', width: '100vw' }}>
+              {isLoaded && (
+                <React.Suspense fallback={<CircleLoader />}>
+                  <SectionComponent />
+                </React.Suspense>
+              )}
+            </Box>
+          )
+        })}
+      </Stack>
     </>
   )
 }

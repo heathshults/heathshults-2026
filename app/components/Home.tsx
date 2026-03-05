@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Paper, Box } from '@mui/material'
+import Welcome from './Welcome.tsx'
 
 export default function Home() {
   return (
@@ -8,7 +9,7 @@ export default function Home() {
         sx={{
           position: 'relative',
           width: '100vw',
-          height: { xs: 'calc(100vh - 56px)', sm: 'calc(100vh - 64px)' },
+          minHeight: { xs: 'calc(100vh - 56px)', sm: 'calc(100vh - 64px)' },
           overflow: 'hidden',
           marginTop: 0, // To offset the fixed header
         }}
@@ -42,7 +43,7 @@ export default function Home() {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            height: '100%',
+            minHeight: '100%',
             position: 'relative',
             zIndex: 1,
             maxWidth: '90%',
@@ -51,8 +52,7 @@ export default function Home() {
             paddingBottom: '2rem',
           }}
         >
-          <img src="/img/wtmp-animated-vivus.svg" alt="Welcome to My Site" style={{ width: '980px', height: 'auto', marginBottom: '1.5rem' }} />
-
+          <Welcome />
           <p style={{ color: '#ccc', fontSize: '1.75rem', textAlign: 'center' }}>Thanks for stopping by. Come on in and take a look around.</p>
         </Box>
       </Box>

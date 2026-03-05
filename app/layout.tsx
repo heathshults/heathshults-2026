@@ -7,9 +7,10 @@ import './css/style.css?ver=2.0'
 import Header from '@app/components/Header'
 import Footer from '@app/components/Footer'
 import Script from 'next/script'
-import { Container, Box } from '@mui/material'
 import { HeaderProvider } from '@comp/HeaderContext'
 import CustomThemeProvider from '@comp/ThemeProvider'
+import config from '@config/app.config'
+import { AppConfigProvider, type ClientAppConfig } from '@comp/AppConfigContext'
 
 const heebo = Heebo({
   variable: '--font-heebo',
@@ -65,30 +66,40 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const clientConfig: ClientAppConfig = {
+    app: {
+      baseUrl: process.env.NEXT_PUBLIC_BASE_URL ?? config.app.baseUrl ?? '',
+    },
+    api: {
+      baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL ?? config.api.baseUrl ?? '',
+      path: process.env.NEXT_PUBLIC_API_PATH ?? process.env.API_PATH ?? '/api',
+    },
+  }
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head></head>
       <body className={`${caveat.variable} ${permanent_marker.variable} ${geistSans.variable} ${geistMono.variable} ${heebo.variable} ${nunito.variable} antialiased home-static`}>
         <CustomThemeProvider>
-          <HeaderProvider>
-            <Header />
-            <Container disableGutters={true} sx={{ maxWidth: '100vw !important', padding: 0, margin: 0 }}>
-              <Box
-                component="main"
+          <AppConfigProvider config={clientConfig}>
+            <HeaderProvider>
+              <Header />
+              <main
                 className="neoh_fn_main"
                 data-footer-sticky=""
-                sx={{
+                suppressHydrationWarning
+                style={{
                   maxWidth: '100%',
                   margin: '0 auto',
                   position: 'relative',
-                  paddingTop: { xs: '56px', sm: '64px' }, // 64px for desktop, 56px for mobile
+                  paddingTop: 'clamp(56px, 5vw, 64px)',
                 }}
               >
                 {children}
                 <Footer />
-              </Box>
-            </Container>
-          </HeaderProvider>
+              </main>
+            </HeaderProvider>
+          </AppConfigProvider>
         </CustomThemeProvider>
         <Script src="/js/jquery.js" strategy="afterInteractive" />
         <Script src="/js/plugins.js" strategy="afterInteractive" />

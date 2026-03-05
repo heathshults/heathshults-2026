@@ -1,4 +1,3 @@
-import type { SxProps } from '@mui/material'
 import React, { lazy } from 'react'
 import type { JSX } from 'react/jsx-runtime'
 export type AppSection = {

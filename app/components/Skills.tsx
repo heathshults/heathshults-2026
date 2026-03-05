@@ -78,7 +78,7 @@ export const Skills: React.FC = () => {
       sx={{
         position: 'relative',
         width: '100vw',
-        height: { xs: '100%', sm: '100%' },
+        minHeight: { xs: 'calc(100vh - 56px)', sm: 'calc(100vh - 64px)' },
         overflow: 'hidden',
         marginTop: 0, // To offset the fixed header
         backgroundColor: '#0a0a0a', // Black background as fallback for video
@@ -110,7 +110,7 @@ export const Skills: React.FC = () => {
         sx={{
           display: 'block',
           textAlign: 'center',
-          height: '100%',
+          minHeight: '100%',
           position: 'relative',
           zIndex: 1,
           maxWidth: '90%',

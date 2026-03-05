@@ -2,32 +2,17 @@
 
 import * as React from 'react'
 import { Paper, Box } from '@mui/material'
-import { pageData } from './serveractions.ts'
-import type { MePageData } from '../types/types.ts'
+import type MePageData from '../types/types.ts'
 import { ExperienceTimeline } from './ExperienceTimeline.tsx'
+import { useAppData } from '../hooks/useAppData.ts'
 
 export const Me: React.FC = () => {
-  const [data, setData] = React.useState<MePageData>()
-  const timelineData = React.useRef([])
+  const { data, error } = useAppData<MePageData>('me')
 
   React.useEffect(() => {
-    if (data) return
-
-    async function getData() {
-      await pageData('me')
-        .then((data) => {
-          setData(data)
-          console.log('DATA:', data)
-        })
-        .catch((err) => {
-          console.error('ERROR:', 'failed to fetch data for Me component', err)
-        })
-    }
-    if (!data) {
-      const fetchit = async () => await getData()
-      fetchit()
-    }
-  }, [])
+    if (!error) return
+    console.error('ERROR:', 'failed to fetch data for Me component', error)
+  }, [error])
 
   return (
     <>
@@ -35,8 +20,8 @@ export const Me: React.FC = () => {
         sx={{
           position: 'relative',
           width: '100vw',
-          height: { xs: 'calc(100vh - 56px)', sm: 'calc(100vh - 64px)' },
-          overflow: 'hidden',
+          height: '100%',
+          overflow: 'visible',
           marginTop: 0, // To offset the fixed header
         }}
       >
@@ -58,30 +43,39 @@ export const Me: React.FC = () => {
           }}
         >
           <source src="/vid/programming-vid.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
+          Your browser does not support HTML5 video.
         </video>
         {/* Content overlay */}
         <Box
-          component="section"
+          component="main"
           className="app-section"
           sx={{
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            justifyContent: 'center',
-            height: '100%',
+            justifyContent: 'flex-start',
+            minHeight: { xs: 'calc(100vh - 56px)', sm: 'calc(100vh - 64px)' },
             position: 'relative',
             zIndex: 1,
             maxWidth: '90%',
             margin: '0 auto',
             paddingTop: '2rem',
             paddingBottom: '2rem',
+            width: '100%',
           }}
         >
-          <h2 style={{ color: '#fff', fontSize: '3rem', textAlign: 'center', fontFamily: 'var(--font-permanent-marker)' }}>{data?.pagename}</h2>
-          <Paper>
+          <h2 style={{ color: '#fff', fontSize: '3rem', textAlign: 'center', fontFamily: 'var(--font-permanent-marker)' }}>My Experience{data?.pagename}</h2>
+          <Paper sx={{ width: '100%' }}>
             <Box>{data?.content}</Box>
-            <Box>
+            <Box
+              sx={{
+                // width: '100%',
+                background: 'url(/img/me/travel.jpg)',
+                backgroundPosition: 'left top',
+                backgroundSize: '200%',
+                marginBottom: '2rem',
+              }}
+            >
               <ExperienceTimeline />
             </Box>
           </Paper>

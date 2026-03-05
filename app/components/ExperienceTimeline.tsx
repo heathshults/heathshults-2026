@@ -10,83 +10,87 @@ import TimelineDot from '@mui/lab/TimelineDot'
 import LaptopMacIcon from '@mui/icons-material/LaptopMac'
 import HotelIcon from '@mui/icons-material/Hotel'
 import RepeatIcon from '@mui/icons-material/Repeat'
-import SchoolIcon from '@mui/icons-material/School'
-import WorkIcon from '@mui/icons-material/Work'
+
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch'
-import { pageData } from './serveractions.ts'
+import pageData from '../data/me.json'
+import type { MePageData } from '../types/types.ts'
+import TimelineIcon from './TimelineIcon/TimelineIcon'
 
 export const ExperienceTimeline: React.FC = () => {
-  const [data, setData] = React.useState<MePageData>()
-  const timelineData = React.useRef([])
+  const [data, setData] = React.useState<MePageData>(pageData)
 
   React.useEffect(() => {
-    if (data) return
-
-    async function getData() {
-      await pageData('me')
-        .then((data) => {
-          setData(data)
-          console.log('DATA:', data)
-        })
-        .catch((err) => {
-          console.error('ERROR:', 'failed to fetch data for Me component', err)
-        })
-    }
     if (!data) {
-      const fetchit = async () => await getData()
-      fetchit()
+      setData(pagedata)
     }
-  }, [])
+
+    // async function getData() {
+    //   try {
+    //     const importedData = React.lazy(() => import('../data/me.json'))
+    //     // The JSON is wrapped in an array, extract the first element
+    //     setData(importedData.default[0])
+    //     console.log('DATA:', importedData.default[0])
+    //   } catch (err) {
+    //     console.error('ERROR:', 'failed to fetch data for ExperienceTimeline', err)
+    //   }
+    // }
+    // if (!data) {
+    //   getData()
+    // }
+  }, [data])
 
   return (
-    <Box>
-      <Timeline position="alternate">
+    <Box sx={{ width: '100%', overflow: 'visible', display: 'flex', justifyContent: 'center' }}>
+      <Timeline position="alternate" sx={{ width: '100%', maxWidth: '900px', padding: 0 }}>
         <TimelineItem position="alternate">
-          <TimelineItem>
-            <TimelineOppositeContent sx={{ m: 'auto 0' }} align="right" variant="body2" color="text.secondary"></TimelineOppositeContent>
+          <TimelineSeparator>
+            <TimelineConnector />
+            <TimelineDot color="error">
+              <RocketLaunchIcon />
+            </TimelineDot>
+            <TimelineConnector />
+          </TimelineSeparator>
 
+          <TimelineContent sx={{ py: '12px', px: 2 }}>
+            <Typography variant="h6" component="span"></Typography>
+          </TimelineContent>
+        </TimelineItem>
+        {/*Top rocket ^ */}
+
+        {pageData[0].timeline.map((item, index) => (
+          <TimelineItem key={`${item.jobtitle}-${index}`}>
+            <TimelineOppositeContent sx={{ m: 'auto 0' }} align="right" variant="body2" color="text.secondary">
+              <Stack>
+                <span style={{ maxWidth: '150px', backgroundColor: 'rgba(0, 0, 0, 0.6)', padding: '1rem', borderRadius: '8px' }}>
+                  <div>{item.date}</div>
+                  <div>{item.location}</div>
+                </span>
+              </Stack>
+            </TimelineOppositeContent>
             <TimelineSeparator>
               <TimelineConnector />
-              <TimelineDot color="error">
-                <RocketLaunchIcon />
+              <TimelineDot color="primary">
+                <TimelineIcon icon={item.icon} />
               </TimelineDot>
               <TimelineConnector />
             </TimelineSeparator>
-
             <TimelineContent sx={{ py: '12px', px: 2 }}>
-              <Typography variant="h6" component="span"></Typography>
+              <Box sx={{ backgroundColor: 'rgba(0, 0, 0, 0.6)', padding: '1rem', borderRadius: '8px' }}>
+                <Typography variant="h6" component="span">
+                  <div style={{ fontWeight: 700, backgroundColor: 'rgba(0, 0, 0, 0.6)', padding: '6px 4px' }}>{item.title}</div>
+                  <div>
+                    <span style={{ fontWeight: 700, fontSize: '1rem' }}> {item.jobtitle}</span>
+                  </div>
+                  <div style={{ paddingTop: '1rem' }}>
+                    <span style={{ fontWeight: 700, fontSize: '0.875rem', marginTop: '1rem' }}>Project(s): </span>
+                    <div style={{ fontWeight: 700, fontSize: '1rem' }}>{item.projects}</div>
+                  </div>
+                </Typography>
+                <Typography sx={{ mt: 2, fontSize: '0.875rem' }}>#{item.description}</Typography>
+              </Box>
             </TimelineContent>
           </TimelineItem>
-          {/*Top rocket ^ */}
-
-          {data?.timeline.map((item, index) => {
-            return (
-              <>
-                <TimelineItem key={`${item.jobtitle}-${index}`}>
-                  <TimelineItem>
-                    <TimelineOppositeContent sx={{ m: 'auto 0' }} align="right" variant="body2" color="text.secondary">
-                      <Stack>
-                        {item.date}
-                        {item.jobtitle}
-                      </Stack>
-                    </TimelineOppositeContent>
-                    <TimelineSeparator>
-                      <TimelineConnector />
-                      <TimelineDot color="primary">{item.icon}</TimelineDot>
-                      <TimelineConnector />
-                    </TimelineSeparator>
-                    <TimelineContent sx={{ py: '12px', px: 2 }}>
-                      <Typography variant="h6" component="span">
-                        {item.title}
-                      </Typography>
-                      <Typography>{item.description}</Typography>
-                    </TimelineContent>
-                  </TimelineItem>
-                </TimelineItem>
-              </>
-            )
-          })}
-        </TimelineItem>
+        ))}
       </Timeline>
     </Box>
   )
