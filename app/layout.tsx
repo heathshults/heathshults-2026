@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import * as React from 'react'
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono, Heebo, Nunito, Caveat, Permanent_Marker } from 'next/font/google'
@@ -75,7 +76,7 @@ export default function RootLayout({
       path: process.env.NEXT_PUBLIC_API_PATH ?? process.env.API_PATH ?? '/api',
     },
   }
-
+  console.log('Client Config:', clientConfig)
   return (
     <html lang="en" suppressHydrationWarning>
       <head></head>
