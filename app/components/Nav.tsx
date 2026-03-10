@@ -20,6 +20,14 @@ interface NavProps {
   sectionRefs?: { [key: string]: React.RefObject<HTMLElement | null> }
 }
 
+function normalizePath(pathname: string) {
+  if (!pathname) {
+    return '/'
+  }
+
+  return pathname !== '/' && pathname.endsWith('/') ? pathname.slice(0, -1) : pathname
+}
+
 export default function Nav({ sectionRefs }: NavProps) {
   const headerContext = useHeader()
   if (!headerContext) {
@@ -35,20 +43,26 @@ export default function Nav({ sectionRefs }: NavProps) {
 
   // Smooth scroll handler using refs
   const handleSmoothScroll = React.useCallback(
-    (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, url: string) => {
-      if (url.startsWith('#')) {
-        e.preventDefault()
-        headerContext.setShowHeader(false)
-        const targetId = url.replace('#', '')
-        const ref = sectionRefs?.[targetId]
-        if (ref && ref.current) {
-          ref.current.scrollIntoView({ behavior: 'smooth' })
-        }
-        setDrawerOpen(false)
-        setTimeout(() => {
-          headerContext.setShowHeader(true)
-        }, 2000) // Adjust timeout as needed
+    (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, sectionId: string, path: string) => {
+      e.preventDefault()
+      headerContext.setShowHeader(false)
+
+      const ref = sectionRefs?.[sectionId]
+      if (ref && ref.current) {
+        ref.current.scrollIntoView({ behavior: 'smooth' })
       }
+
+      if (typeof window !== 'undefined') {
+        const currentPath = normalizePath(window.location.pathname)
+        if (currentPath !== path) {
+          window.history.pushState(window.history.state, '', path)
+        }
+      }
+
+      setDrawerOpen(false)
+      setTimeout(() => {
+        headerContext.setShowHeader(true)
+      }, 2000) // Adjust timeout as needed
     },
     [headerContext, sectionRefs]
   )
@@ -59,7 +73,7 @@ export default function Nav({ sectionRefs }: NavProps) {
         <Toolbar>
           <Typography component="div" sx={{ flexGrow: 1, fontWeight: 'bold', color: '#fed136' }}>
             <Link
-              href="#"
+              href="/home"
               className="site-logo-link navbar-brand site-logo"
               style={{ fontFamily: 'caveat', textDecoration: 'none', color: '#fed136', fontSize: '2.5rem', alignItems: 'center' }}
             >
@@ -124,9 +138,9 @@ export default function Nav({ sectionRefs }: NavProps) {
               <ListItem key={link.page} disablePadding sx={{ justifyContent: 'center', color: '#fff' }}>
                 <ListItemButton
                   component={Link}
-                  href={link.url}
+                  href={link.path}
                   sx={{ justifyContent: 'center', color: '#fff' }}
-                  onClick={(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => handleSmoothScroll(e, link.url)}
+                  onClick={(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => handleSmoothScroll(e, link.id, link.path)}
                 >
                   <ListItemText
                     primary={link.page}

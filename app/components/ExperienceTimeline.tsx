@@ -7,9 +7,7 @@ import TimelineConnector from '@mui/lab/TimelineConnector'
 import TimelineContent from '@mui/lab/TimelineContent'
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent'
 import TimelineDot from '@mui/lab/TimelineDot'
-import LaptopMacIcon from '@mui/icons-material/LaptopMac'
-import HotelIcon from '@mui/icons-material/Hotel'
-import RepeatIcon from '@mui/icons-material/Repeat'
+import SchoolIcon from '@mui/icons-material/School'
 
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch'
 import pageData from '../data/me.json'
@@ -45,8 +43,8 @@ export const ExperienceTimeline: React.FC = () => {
         <TimelineItem position="alternate">
           <TimelineSeparator>
             <TimelineConnector />
-            <TimelineDot color="error">
-              <RocketLaunchIcon />
+            <TimelineDot color="error" sx={{ width: 60, height: 60, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <RocketLaunchIcon sx={{ fontSize: 40 }} />
             </TimelineDot>
             <TimelineConnector />
           </TimelineSeparator>
@@ -61,7 +59,7 @@ export const ExperienceTimeline: React.FC = () => {
           <TimelineItem key={`${item.jobtitle}-${index}`}>
             <TimelineOppositeContent sx={{ m: 'auto 0' }} align="right" variant="body2" color="text.secondary">
               <Stack>
-                <span style={{ maxWidth: '150px', backgroundColor: 'rgba(0, 0, 0, 0.6)', padding: '1rem', borderRadius: '8px' }}>
+                <span style={{ maxWidth: '150px', backgroundColor: 'rgba(0, 0, 0, 0.8)', padding: '1rem', borderRadius: '8px' }}>
                   <div>{item.date}</div>
                   <div>{item.location}</div>
                 </span>
@@ -69,21 +67,21 @@ export const ExperienceTimeline: React.FC = () => {
             </TimelineOppositeContent>
             <TimelineSeparator>
               <TimelineConnector />
-              <TimelineDot color="primary">
+              <TimelineDot color="primary" sx={{ width: 60, height: 60, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <TimelineIcon icon={item.icon} />
               </TimelineDot>
               <TimelineConnector />
             </TimelineSeparator>
             <TimelineContent sx={{ py: '12px', px: 2 }}>
-              <Box sx={{ backgroundColor: 'rgba(0, 0, 0, 0.6)', padding: '1rem', borderRadius: '8px' }}>
+              <Box sx={{ backgroundColor: 'rgba(0, 0, 0, 0.8)', padding: '1rem', borderRadius: '8px' }}>
                 <Typography variant="h6" component="span">
-                  <div style={{ fontWeight: 700, backgroundColor: 'rgba(0, 0, 0, 0.6)', padding: '6px 4px' }}>{item.title}</div>
+                  <div style={{ fontWeight: 400, backgroundColor: 'rgba(0, 0, 0, 0.8)', color: '#ffcc7a', padding: '6px 4px' }}>{item.title}</div>
                   <div>
-                    <span style={{ fontWeight: 700, fontSize: '1rem' }}> {item.jobtitle}</span>
+                    <span style={{ fontWeight: 400, fontSize: '1rem' }}> {item.jobtitle}</span>
                   </div>
                   <div style={{ paddingTop: '1rem' }}>
-                    <span style={{ fontWeight: 700, fontSize: '0.875rem', marginTop: '1rem' }}>Project(s): </span>
-                    <div style={{ fontWeight: 700, fontSize: '1rem' }}>{item.projects}</div>
+                    <span style={{ fontWeight: 400, fontSize: '0.875rem', marginTop: '1rem', color: '#ffcc7a' }}>Project(s): </span>
+                    <div style={{ fontWeight: 400, fontSize: '0.75rem' }}>{item.projects}</div>
                   </div>
                 </Typography>
                 <Typography sx={{ mt: 2, fontSize: '0.875rem' }}>#{item.description}</Typography>

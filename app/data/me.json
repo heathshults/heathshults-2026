@@ -13,13 +13,13 @@
         "id": 0,
         "date": "September 1998",
         "title": "Sessions College for Professional Design",
-        "icon": "school",
+        "icon": "SchoolIcon",
         "jobtitle": "Student",
         "techstack": ["HTML", "CSS", "JavaScript", "Flash", "ActionScript", "Photoshop", "Illustrator", "InDesign"],
-        "projects": "Graphic Design, Flash and Web Developmen",
+        "projects": "Graphic Design, Flash and Web Development",
         "location": "Tempe, AZ",
         "examples": "./",
-        "description": "I thought to myself, \"Hmmm... looks like this internet thing might stick around...\""
+        "description": "I thought to myself, \"Hmmm... this internet thing might just stick around...\""
       },
       {
         "id": 1,
@@ -43,7 +43,7 @@
         "techstack": ["HTML", "CSS", "JavaScript", "React.js"],
         "location": "Frisco, TX",
         "examples": "./",
-        "description": "UI/UX Engineer was a startup company focused on youth football player tracking. I Converted creative assets into functional interactive user interfaces and received my first exposuer to React.js"
+        "description": "UI/UX Engineer was a startup company focused on youth football player tracking. I Converted creative assets into functional interactive user interfaces and received my first exposure to React.js"
       },
       {
         "id": 3,

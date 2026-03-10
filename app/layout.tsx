@@ -76,7 +76,7 @@ export default function RootLayout({
       path: process.env.NEXT_PUBLIC_API_PATH ?? process.env.API_PATH ?? '/api',
     },
   }
-  console.log('Client Config:', clientConfig)
+  // console.log('Client Config:', clientConfig)
   return (
     <html lang="en" suppressHydrationWarning>
       <head></head>

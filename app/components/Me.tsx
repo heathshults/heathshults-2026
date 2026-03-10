@@ -23,6 +23,9 @@ export const Me: React.FC = () => {
           height: '100%',
           overflow: 'visible',
           marginTop: 0, // To offset the fixed header
+          background: 'url(/img/me/me-bg.jpg)',
+          backgroundPosition: 'left top',
+          backgroundSize: '100% ',
         }}
       >
         {/* Video background */}
@@ -42,7 +45,7 @@ export const Me: React.FC = () => {
             zIndex: 0,
           }}
         >
-          <source src="/vid/programming-vid.mp4" type="video/mp4" />
+          {/* <source src="/vid/programming-vid.mp4" type="video/mp4" /> */}
           Your browser does not support HTML5 video.
         </video>
         {/* Content overlay */}
@@ -70,9 +73,9 @@ export const Me: React.FC = () => {
             <Box
               sx={{
                 // width: '100%',
-                background: 'url(/img/me/travel.jpg)',
+                background: 'url(/img/me/travel-map.jpg)',
                 backgroundPosition: 'left top',
-                backgroundSize: '200%',
+                backgroundSize: '100%',
                 marginBottom: '2rem',
               }}
             >
