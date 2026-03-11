@@ -12,6 +12,7 @@ export const appFrame: AppSection[] = [
   { page: 'Me', id: 'me', path: '/me', component: lazy(() => import('@comp/Me')) },
   { page: 'Skills', id: 'skills', path: '/skills', component: lazy(() => import('@comp/Skills')) },
   { page: 'Portfolio', id: 'portfolio', path: '/portfolio', component: lazy(() => import('@comp/Portfolio')) },
+  { page: 'Fetch Stream', id: 'fetchstream', path: '/fetch-stream', component: lazy(() => import('../dev/fetch-stream/page')) },
   { page: 'Contact', id: 'contact', path: '/contact', component: lazy(() => import('@comp/Contact')) },
 ]
 

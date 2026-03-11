@@ -23,6 +23,7 @@
     "paths": {
       "@/*": ["./*"],
       "@app/*": ["./app/*"],
+      "@dev/*": ["./app/dev/*"],
       "@config/*": ["./app/config/*"],
       "@comp/*": ["./app/components/*"],
       "@data/*": ["./app/data/*"]
